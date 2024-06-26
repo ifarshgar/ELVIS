@@ -18,7 +18,7 @@
   </head>
   <body>
     <header class="row">
-      <div class="logo not-selectable">
+      <div class="logo not-selectable" id="logo">
         <h1>ELVIS</h1>
       </div>
       <div class="nav-btn" id="variables-nav-btn">My variables</div>
@@ -70,17 +70,22 @@
                 <img src="src/images/up-down-arrow.png" alt="arrow" class="sorting-arrow" />
               </th>
               <th>
-                name
+                Recommended tech name
                 <img src="src/images/up-down-arrow.png" alt="arrow" class="sorting-arrow" />
               </th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id="records">
             <tr>
-              <td class="wide">Ablatio mammae</td>
-              <td>Yes</td>
-              <td>01-01-2009</td>
-              <td>ablatioMammae</td>
+              <div class="row">
+                <div class="wide">Ablatio mammae</div>
+                <div>Yes</div>
+                <div>01-01-2009</div>
+                <div>ablatioMammae</div>
+              </div>
+              <div class="row">
+                <div>Indicates whether ablatio mammae has been performed</div>
+              </div>
             </tr>
             <tr>
               <td class="wide">Action after diagnostics</td>

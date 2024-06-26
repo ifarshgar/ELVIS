@@ -1,11 +1,9 @@
+import { updateVariablesTable } from './utilities';
 
-export const getAllHistoryRecords = () => {
-  fetch('http://localhost:8888/history')
-    .then((res) => res.json())
-    .then((records: HistoryRecord[]) => {
-      if (records?.length) {
-        updateLeaderboard(records);
-      }
-    })
-    .catch((err) => console.error(err));
-};
+// OnClick listener for the main website logo
+const logo = document.getElementById('logo');
+logo.addEventListener('click', () => {
+  window.location.href = '/';
+});
+
+// updateVariablesTable();

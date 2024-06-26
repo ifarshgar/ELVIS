@@ -220,8 +220,7 @@ table {
 table td {
   padding: 10px;
   text-align: left;
-  border: 1px solid var(--gray);
-  width: 80px;
+  /* border: 1px solid var(--gray); */
 }
 
 table th {
