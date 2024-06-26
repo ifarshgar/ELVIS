@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="ELVIS - Metadata documentation system at Cancer Registry" />
+    <link rel="icon" type="image/svg+xml" href="favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ELVIS</title>
+    <script type="module" src="/src/main.js" defer></script>
+    <link rel="stylesheet" href="src/styles.css" />
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="row">
+      <div class="logo not-selectable">
+        <h1>ELVIS</h1>
+      </div>
+      <div class="nav-btn" id="variables-nav-btn">My variables</div>
+      <div class="nav-btn" id="help-nav-btn">Help</div>
+
+      <div class="language-select">
+        <select id="language">
+          <option value="en">🇬🇧 &nbsp; EN</option>
+          <option value="no">🇳🇴 &nbsp; NO</option>
+        </select>
+      </div>
+    </header>
+
+    <div class="variables container">
+      <h1>Variables</h1>
+
+      <div class="controls row">
+        <div class="body-search-section">
+          <div class="search">
+            <input type="text" placeholder="Search for variables" />
+            <div class="search-image-container">
+              <img src="src/images/search.png" alt="search" />
+            </div>
+          </div>
+        </div>
+
+        <div class="download btn">
+          <img src="src/images/download.png" alt="download" />
+        </div>
+      </div>
+
+      <br />
+      <div class="divider"></div>
+
+      <div class="variables-table">
+        <table>
+          <thead>
+            <tr>
+              <th class="wide">
+                Name
+                <img src="src/images/up-down-arrow.png" alt="arrow" class="sorting-arrow" />
+              </th>
+              <th>
+                Deliverable
+                <img src="src/images/up-down-arrow.png" alt="arrow" class="sorting-arrow" />
+              </th>
+              <th>
+                Valid from
+                <img src="src/images/up-down-arrow.png" alt="arrow" class="sorting-arrow" />
+              </th>
+              <th>
+                name
+                <img src="src/images/up-down-arrow.png" alt="arrow" class="sorting-arrow" />
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="wide">Ablatio mammae</td>
+              <td>Yes</td>
+              <td>01-01-2009</td>
+              <td>ablatioMammae</td>
+            </tr>
+            <tr>
+              <td class="wide">Action after diagnostics</td>
+              <td>Yes</td>
+              <td>01-01-2009</td>
+              <td>tiltakEtterUtr</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

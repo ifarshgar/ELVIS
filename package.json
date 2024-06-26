@@ -1,0 +1,18 @@
+{
+  "name": "elvis",
+  "description": "Metadata documentation system at Cancer Registry Project",
+  "author": "Abdolrahman Farshgar",
+  "version": "1.0.0",
+  "keywords": [],
+  "license": "ISC",
+  "type": "module",
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "prettier": "^3.3.2",
+    "vite": "^5.3.1"
+  }
+}
