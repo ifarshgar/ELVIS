@@ -7,7 +7,7 @@
 body {
   width: 100%;
   height: 100%;
-  font-family: "Barlow", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: 300;
   font-style: normal;
   font-size: 16px;
@@ -32,6 +32,8 @@ body {
   --dark: #343a40;
   --white-hover: #ffffffb3;
   --table-header: #f2f2f2;
+  --table-gray: #6C757D;
+  --table-body: #212529;
 }
 
 .row {
@@ -209,7 +211,7 @@ header {
 
 /* Table */
 
-table {
+.table {
   border-collapse: collapse;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin-top: 20px;
@@ -217,21 +219,42 @@ table {
   border: 1px solid var(--gray);
 }
 
-table td {
+.table-header {
   padding: 10px;
-  text-align: left;
-  /* border: 1px solid var(--gray); */
+  font-weight: 600;
+  background-color: var(--table-header);
+  display: flex;
+  gap: 10px;
 }
 
-table th {
-  padding: 10px;
+.th-item {
+  flex-grow: 1;
+  flex-basis: 0;
   text-align: left;
-  font-weight: bold;
-  background-color: var(--table-header);
+  font-size: 16px;
+}
+
+.wide.th-item {
+  font-weight: 600;
 }
 
 .wide {
-  width: 250px;
+  flex-basis: 160px !important;
+  font-size: 16px !important;
+  color: var(--elvis-primary) !important;
+  font-weight: 400;
+}
+
+.medium {
+  flex-basis: 100px !important;
+}
+
+.item {
+  flex-grow: 1;
+  flex-basis: 0;
+  text-align: left;
+  font-size: 14px;
+  color: var(--table-body)
 }
 
 .sorting-arrow {
@@ -242,5 +265,26 @@ table th {
 }
 
 .sorting-arrow:hover {
+  cursor: pointer;
+}
+
+.table-row {
+  padding: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.table-row-details {
+  font-size: 14px;
+  color: var(--table-gray);
+  padding: 10px;
+  border-bottom: 1px solid var(--gray);
+}
+
+/* ------------------------------------------- */
+
+/* Search */
+
+#search-icon:hover {
   cursor: pointer;
 }

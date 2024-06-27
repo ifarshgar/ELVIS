@@ -4,20 +4,25 @@
 
 [ELVIS website](https://metadata.kreftregisteret.no/variables)
 
+
+<img src="src/images/app.png" alt="app" />
+
 ## Quick Start
 
-In order to use the application you should first navigate to the client folder with your terminal and then install the packages and dependecies of the project and later on you can run the application by using the following commands:
+In order to use the application you should first navigate to the root of the project folder with your terminal and then install the packages and dependecies of the project and later on you can run the application by using the following commands:
 
 ```
-  npm install
-  npm run dev
+  yarn
+  yar start
 ```
+
+If you did not have `yarn` package manager you can also use `npm`. 
 
 
 ## HTML
 
-There are two html pages in this application. One of the is called of course the index.html file which is the main thing that will be diplayed upon running the application. And the second file is game.html which contains the game graphics.
+There is only one html page in this application. The index.html file which is the main file that that contains the UI graphics and components taht will be controlled by JavaScript.
 
 ## CSS
 
-Like it was mentioned above, we have only two html files in this relateively small project. For each html file a corresponding css file has been created also. At the end of each css file we have some media queries to help the application to be playable on a smaller device let's say a mobile phone. The css files are located in src/css/ folder.
+There is also only one css file in this relateively small project. At the end of each css file we have some media queries to help the application to be playable on a smaller device let's say a mobile phone. 

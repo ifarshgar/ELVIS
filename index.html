@@ -38,9 +38,9 @@
       <div class="controls row">
         <div class="body-search-section">
           <div class="search">
-            <input type="text" placeholder="Search for variables" />
+            <input type="text" placeholder="Search for variables" id="search-input" />
             <div class="search-image-container">
-              <img src="src/images/search.png" alt="search" />
+              <img src="src/images/search.png" alt="search" id="search-icon"/>
             </div>
           </div>
         </div>
@@ -53,48 +53,55 @@
       <br />
       <div class="divider"></div>
 
-      <div class="variables-table">
-        <table>
-          <thead>
-            <tr>
-              <th class="wide">
-                Name
-                <img src="src/images/up-down-arrow.png" alt="arrow" class="sorting-arrow" />
-              </th>
-              <th>
-                Deliverable
-                <img src="src/images/up-down-arrow.png" alt="arrow" class="sorting-arrow" />
-              </th>
-              <th>
-                Valid from
-                <img src="src/images/up-down-arrow.png" alt="arrow" class="sorting-arrow" />
-              </th>
-              <th>
-                Recommended tech name
-                <img src="src/images/up-down-arrow.png" alt="arrow" class="sorting-arrow" />
-              </th>
-            </tr>
-          </thead>
-          <tbody id="records">
-            <tr>
-              <div class="row">
-                <div class="wide">Ablatio mammae</div>
-                <div>Yes</div>
-                <div>01-01-2009</div>
-                <div>ablatioMammae</div>
-              </div>
-              <div class="row">
-                <div>Indicates whether ablatio mammae has been performed</div>
-              </div>
-            </tr>
-            <tr>
-              <td class="wide">Action after diagnostics</td>
-              <td>Yes</td>
-              <td>01-01-2009</td>
-              <td>tiltakEtterUtr</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="table">
+        <div class="table-header row">
+          <div class="wide th-item">
+            Name
+            <img
+              src="src/images/up-down-arrow.png"
+              alt="arrow"
+              class="sorting-arrow"
+              id="th-name"
+            />
+          </div>
+          <div class="th-item">
+            Deliverable
+            <img
+              src="src/images/up-down-arrow.png"
+              alt="arrow"
+              class="sorting-arrow"
+              id="th-deliverable"
+            />
+          </div>
+          <div class="th-item">
+            Valid from
+            <img
+              src="src/images/up-down-arrow.png"
+              alt="arrow"
+              class="sorting-arrow"
+              id="th-valid-from"
+            />
+          </div>
+          <div class="medium th-item">
+            Recommended tech name
+            <img
+              src="src/images/up-down-arrow.png"
+              alt="arrow"
+              class="sorting-arrow"
+              id="th-tech-name"
+            />
+          </div>
+        </div>
+
+        <div class="table-body" id="table-body">
+          <div class="table-row">
+            <div class="wide item">Ablatio mammae</div>
+            <div class="item">Yes</div>
+            <div class="item">01-01-2009</div>
+            <div class="medium item">ablatioMammae</div>
+          </div>
+          <div class="table-row-details">Indicates whether ablatio mammae has been performed.</div>
+        </div>
       </div>
     </div>
   </body>
