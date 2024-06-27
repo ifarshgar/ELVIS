@@ -281,12 +281,29 @@ header {
   border-bottom: 1px solid var(--gray);
 }
 
+.table-row-details:hover {
+  cursor: pointer;
+}
+
 .expanding-row {
-  display: none;
+  border-bottom: 1px solid var(--gray);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.1s ease-out;
+}
+
+.expanding-row .item {
+  padding: 10px;
 }
 
 .expanding-row.expanded { 
-  display: block;
+  max-height: 500px; 
+  transition: max-height 0.3s ease-in-out 0.3s; 
+}
+
+.label {
+  color: var(--elvis-primary);
+  font-weight: 600;
 }
 
 /* ------------------------------------------- */

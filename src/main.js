@@ -13,15 +13,6 @@ let searchValue = '';
 let sortBy = SortBy.NAME_ASC;
 initialize();
 
-const rowContainers = document.querySelectorAll('.row-container');
-rowContainers.forEach((container) => {
-  const tableRow = container.querySelector('.table-row');
-  const expandingRow = container.querySelector('.expanding-row');
-
-  tableRow.addEventListener('click', () => {
-    expandingRow.classList.toggle('expanded');
-  });
-});
 
 // Search
 const searchIcon = document.getElementById('search-icon');
