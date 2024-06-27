@@ -14,7 +14,7 @@ In order to use the application you should first navigate to the root of the pro
 
 ```
   yarn
-  yar start
+  yarn start
 ```
 
 If you did not have `yarn` package manager you can also use `npm`. 
