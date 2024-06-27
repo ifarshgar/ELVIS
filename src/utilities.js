@@ -1,4 +1,6 @@
 import dayjs from 'dayjs';
+import { getFilteredData } from './search';
+import { getSortedData, SortBy } from './sort';
 
 export const getCurrentDateTime = () => {
   return dayjs().format('YYYY-MM-DD HH:mm:ss.SSS');
@@ -49214,117 +49216,77 @@ export const getAllVariables = async () => {
       backendSearchTime: '2024-06-25 21:42:40.974',
     };
     const variables = records?.['variableList'] ?? [];
-    return variables;
+    // return variables;
+    return null;
   } catch (err) {
     console.error(err);
   }
 };
 
-export const extractData = (variables) => {
-  const tableRows = [];
+export const getExtractedData = (variables = {}) => {
+  const extractedData = [];
 
   for (const variable of variables) {
-    const name = variable.nameEn;
-    const deliverable = variable.status.nameEn === 'Active' ? 'Yes' : 'No';
-    const validFrom = variable.validFrom;
-    const recommendedTechName = variable.techName;
-    const description = variable.descriptionEn;
-    const clinicalRegistries = 'Breast cancer';
-    const cancerSites = 'Breast';
-    const category = variable.category.nameEn;
-    const informationLevel = variable.informationLevel.nameEn;
-    const source = 'Pathology reports, Clinical notifications';
-    const registrationMethods = variable.registrationMethod.nameEn;
-    const variabletype = variable.variableType.nameEn;
-    const currentlyInUse = variable.status.nameEn === 'Active' ? 'Yes' : 'No';
-
-    const newRow = `
-      <div class="table-row">
-        <div class="wide item">${name}</div>
-        <div class="item">${deliverable}</div>
-        <div class="item">${validFrom}</div>
-        <div class="medium item">${recommendedTechName}</div>
-      </div>
-      <div class="table-row-details">
-        ${description}
-      </div>
-    `;
-
-    tableRows.push(newRow);
+    const variableObj = {
+      name: variable.nameEn,
+      deliverable: variable.validForExtraction === 2 ? 'Yes' : 'If need be',
+      validFrom: variable.validFrom,
+      techName: variable.techName,
+      description: variable.descriptionEn,
+      clinicalRegistries: 'Breast cancer',
+      cancerSites: 'Breast',
+      category: variable.category.nameEn,
+      informationLevel: variable.informationLevel.nameEn,
+      source: 'Pathology reports, Clinical notifications',
+      registrationMethods: variable.registrationMethod.nameEn,
+      variabletype: variable.variableType.nameEn,
+      currentlyInUse: variable.status.nameEn === 'Active' ? 'Yes' : 'No',
+    };
+    extractedData.push(variableObj);
   }
 
+  return extractedData;
+};
+
+export const createTableRows = (extractedData = []) => {
+  const tableRows = [];
+  for (const obj of extractedData) {
+    const newRow = `
+    <div class="table-row">
+      <div class="wide item">${obj.name}</div>
+      <div class="item">${obj.deliverable}</div>
+      <div class="item">${obj.validFrom}</div>
+      <div class="medium item">${obj.techName}</div>
+      </div>
+    <div class="table-row-details">
+      ${obj.description}
+    </div>
+  `;
+    tableRows.push(newRow);
+  }
   return tableRows;
 };
 
-const tbody = document.getElementById('table-body');
-export const updateVariablesTable = async (sortBy, searchValue) => {
-  const variables = await getAllVariables();
-  const sortedVariables = getSortedVariables(sortBy, variables);
-  const filteredVariables = getFilteredVariables(searchValue, sortedVariables);
-  const tableRows = extractData(filteredVariables);
+let _Variables;
+export const initialize = async () => {
+  _Variables = await getAllVariables();
+  const extractedData = getExtractedData(_Variables);
+  const filteredData = getFilteredData(null, extractedData);
+  const sortedData = getSortedData(SortBy.NAME_ASC, filteredData);
+  const tableRows = createTableRows(sortedData);
   tbody.innerHTML = tableRows.join('');
 };
 
-// search
-const getFilteredVariables = (searchValue, variables) => {
-  if (!searchValue) {
-    return variables;
-  }
+export const getExtractedFilteredSortedData = (sortBy, searchValue) => {
+  const extractedData = getExtractedData(_Variables);
+  const filteredData = getFilteredData(searchValue, extractedData);
+  const sortedData = getSortedData(sortBy, filteredData);
+  return sortedData;
+}
 
-  return variables.filter((variable) => {
-    if (variable?.['descriptionEn'].includes(searchValue)) {
-      return true;
-    }
-    if (variable?.['nameEn'].includes(searchValue)) {
-      return true;
-    }
-    if (variable?.['techName'].includes(searchValue)) {
-      return true;
-    }
-  });
-};
-
-// sort
-export const SortBy = {
-  NAME_ASC: 'Name Ascending',
-  NAME_DSC: 'Name Descending',
-  DELIVERABLE_ASC: 'Deliverable Ascending',
-  DELIVERABLE_DSC: 'Deliverable Descending',
-  VALID_FROM_ASC: 'Valid from Ascending',
-  VALID_FROM_DSC: 'Valid from Descending',
-  TECH_NAME_ASC: 'Tech name Ascending',
-  TECH_NAME_DSC: 'Tech name Descending',
-};
-
-export const sortASC = (a, b) => {
-  if (a.toLowerCase() < b.toLowerCase()) return -1;
-  if (a.toLowerCase() > b.toLowerCase()) return 1;
-  return 0;
-};
-
-export const sortDCS = (a, b) => {
-  if (a.toLowerCase() < b.toLowerCase()) return 1;
-  if (a.toLowerCase() > b.toLowerCase()) return -1;
-  return 0;
-};
-
-export const getSortedVariables = (sortBy, variables) => {
-  let sortedVariables = [];
-  if (sortBy === SortBy.NAME_ASC) {
-    sortedVariables = variables.sort((a, b) => sortASC(a['nameEn'], b['nameEn']));
-  } else if (sortBy === SortBy.NAME_DSC) {
-    sortedVariables = variables.sort((a, b) => sortDCS(a['nameEn'], b['nameEn']));
-  } else if (sortBy === SortBy.DELIVERABLE_ASC) {
-    sortedVariables = variables.sort((a, b) =>
-      sortASC(a['status']['nameEn'], b['status']['nameEn'])
-    );
-  } else if (sortBy === SortBy.DELIVERABLE_DSC) {
-    sortedVariables = variables.sort((a, b) =>
-      sortDCS(a['status']['nameEn'], b['status']['nameEn'])
-    );
-  } else {
-    sortedVariables = variables.sort((a, b) => sortASC(a['nameEn'], b['nameEn']));
-  }
-
-  return sortedVariables;
+const tbody = document.getElementById('table-body');
+export const updateVariablesTable = async (sortBy, searchValue) => {
+  const data = getExtractedFilteredSortedData(sortBy, searchValue);
+  const tableRows = createTableRows(data);
+  tbody.innerHTML = tableRows.join('');
 };

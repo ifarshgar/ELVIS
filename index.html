@@ -38,15 +38,20 @@
       <div class="controls row">
         <div class="body-search-section">
           <div class="search">
-            <input type="text" placeholder="Search for variables" id="search-input" />
+            <input
+              type="text"
+              placeholder="Search for variables"
+              id="search-input"
+              autocomplete="off"
+            />
             <div class="search-image-container">
-              <img src="src/images/search.png" alt="search" id="search-icon"/>
+              <img src="src/images/search.png" alt="search" id="search-icon" />
             </div>
           </div>
         </div>
 
         <div class="download btn">
-          <img src="src/images/download.png" alt="download" />
+          <img src="src/images/download.png" alt="download" id="download"/>
         </div>
       </div>
 
@@ -94,13 +99,21 @@
         </div>
 
         <div class="table-body" id="table-body">
-          <div class="table-row">
-            <div class="wide item">Ablatio mammae</div>
-            <div class="item">Yes</div>
-            <div class="item">01-01-2009</div>
-            <div class="medium item">ablatioMammae</div>
+
+          <div class="row-container">
+            <div class="table-row">
+              <div class="wide item">Ablatio mammae</div>
+              <div class="item">Yes</div>
+              <div class="item">01-01-2009</div>
+              <div class="medium item">ablatioMammae</div>
+            </div>
+            <div class="table-row-details">Indicates whether ablatio mammae has been performed.</div>
+            <div class="expanding-row">
+              some stuff
+            </div>
           </div>
-          <div class="table-row-details">Indicates whether ablatio mammae has been performed.</div>
+
+
         </div>
       </div>
     </div>
