@@ -281,6 +281,14 @@ header {
   border-bottom: 1px solid var(--gray);
 }
 
+.expanding-row {
+  display: none;
+}
+
+.expanding-row.expanded { 
+  display: block;
+}
+
 /* ------------------------------------------- */
 
 /* Search */
