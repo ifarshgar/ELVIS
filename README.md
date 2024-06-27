@@ -36,3 +36,10 @@ There is only one html page in this application. The index.html file which is th
 ## CSS
 
 There is also only one css file in this relateively small project. At the end of each css file we have some media queries to help the application to be playable on a smaller device let's say a mobile phone. 
+
+## Future improvements
+
+- Adding more data to the expanding row
+- Adding a pagination to only display e.g. 20 rows of data on each page
+- Adding tests
+- Using TypeScript instead of JavaScript to ensure code reliability and scalability
