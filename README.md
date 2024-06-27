@@ -4,6 +4,7 @@
 
 [ELVIS website](https://metadata.kreftregisteret.no/variables)
 
+This is a small project made by HTML/CSS and pure JavaScript for fetching and showing the variables of the cancer registry project in an easy and manageable way. 
 
 <img src="src/images/app.png" alt="app" />
 
